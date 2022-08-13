@@ -25,15 +25,33 @@ def roll_off(handicap1,handicap2):
     Precondition: handicap2 is a number
     """
     # Player 1 computes score
-    die1 = random.randint(1,6)
-    die2 = random.randint(1,6)
-    sum1 = die1+die2+handicap1
+    sum1 = rollem(1, 6) + handicap1
     
     # Player 2 computes score
-    die1 = random.randint(1,6)
-    die2 = random.randint(1,6)
-    sum2 = die1+die2+handicap2
+    sum2 = rollem(1, 6) + handicap2
     
     # Determine result
     print('Player 1 got '+str(sum1)+'; Player 2 got '+str(sum2)+'.')
     return sum1 > sum2
+
+def rollem(first, last):
+  """
+  Returns the sum of two random numbers.
+
+  The numbers generated are between first and last (inclusive).  
+
+  Example: rollem(1,6) can return any value between 2 and 12.
+
+  Parameter first: The lowest possible number
+  Precondition: first is an integer
+
+  Parameter last: The greatest possible number
+  Precondition: last is an integer, last >= first
+  """
+  
+  num1 = random.randint(first,last)
+  num2 = random.randint(first,last)
+  
+  thesum = num1+num2
+  
+  return thesum
