@@ -12,3 +12,7 @@ def next():
     """
     Returns and increments the value of VAR.
     """
+    global VAR
+    result = VAR
+    VAR += 1
+    return result
