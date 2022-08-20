@@ -21,7 +21,7 @@ def has_a_vowel(s):
     
     This function may include intentional errors.
     """
-    return 'a' in s or 'e' in s or 'i' in s or 'o' in s
+    return 'a' in s or 'e' in s or 'i' in s or 'o' in s or 'u' in s
 
 
 def has_y_vowel(s):
@@ -36,4 +36,4 @@ def has_y_vowel(s):
     
     This function may include intentional errors.
     """
-    return 'y' in s[:1]
+    return 'y' in s[1:]
