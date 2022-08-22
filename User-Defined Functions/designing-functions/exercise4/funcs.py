@@ -5,8 +5,8 @@ The primary function in this module is str_to_seconds.  The functions get_hours,
 get_minutes, and get_seconds are all helper functions that are used to implement 
 this function.  They should implemented in the order listed.
 
-<YOUR NAME HERE>
-<DATE HERE>
+Author: Orlando McEwan
+Date: 08/21/2022
 """
 import introcs
 
@@ -31,9 +31,11 @@ def get_seconds(time):
     
     Parameter time: The string representation of the time
     Precondition: time is a string in extended ISO 8601 format 'hh:mm:ss'
-    """
-    pass
-    
+    """ 
+    return int(time[-2:])
+
+get_seconds('12:35:15')
+
 
 def get_minutes(time):
     """
@@ -56,7 +58,7 @@ def get_minutes(time):
     Parameter time: The string representation of the time
     Precondition: time is a string in extended ISO 8601 format 'hh:mm:ss'
     """
-    pass
+    return int(time[3:5])
     
 
 def get_hours(time):
@@ -80,7 +82,7 @@ def get_hours(time):
     Parameter time: The string representation of the time
     Precondition: time is a string in extended ISO 8601 format 'hh:mm:ss'
     """
-    pass
+    return int(time[0:2])
 
 
 def str_to_seconds(time):
@@ -104,5 +106,9 @@ def str_to_seconds(time):
     Parameter time: The string representation of the time
     Precondition: time is a string in extended ISO 8601 format 'hh:mm:ss'
     """
-    pass
+    seconds = get_seconds(time)
+    mins_to_seconds = get_minutes(time) * 60
+    hours_to_seconds = get_hours(time) * 60 * 60
+    
+    return seconds + mins_to_seconds + hours_to_seconds
     
