@@ -55,6 +55,20 @@ def test_first_inside_quotes():
     Test procedure for first_inside_quotes
     """
     print("Testing first_inside_quotes")
+    
+    result = currency.first_inside_quotes("He\"ll\"o")
+    introcs.assert_equals("ll", result)
+    
+    result = currency.first_inside_quotes("H\"e\"ll\"o")
+    introcs.assert_equals("e", result)
+    
+    result = currency.first_inside_quotes('"Hello"')
+    introcs.assert_equals("Hello", result)
+    
+    result = currency.first_inside_quotes('""Hello')
+    introcs.assert_equals("", result)
+    
+    
 
 
 def test_get_src():
@@ -62,7 +76,18 @@ def test_get_src():
     Test procedure for get_src
     """
     print("Testing get_src")
-
+    
+    result = currency.get_src('{"success": true, "src": "2 United States Dollars", "dst": "1.772814 Euros", "error": ""}')
+    introcs.assert_equals('2 United States Dollars', result)
+    
+    result = currency.get_src('{"success":false,"src":"","dst":"","error":"Source currency code is invalid."}')
+    introcs.assert_equals('', result)
+    
+    result = currency.get_src('{"success": true, "src":"2 United States Dollars", "dst": "1.772814 Euros", "error": ""}')
+    introcs.assert_equals('2 United States Dollars', result)
+    
+    result = currency.get_src('{"success":false,"src": "","dst":"","error":"Source currency code is invalid."}')
+    introcs.assert_equals('', result)
 
 def test_get_dst():
     """
@@ -101,8 +126,8 @@ def test_exchange():
 
 test_before_space()
 test_after_space()
-# test_first_inside_quotes()
-# test_get_src()
+test_first_inside_quotes()
+test_get_src()
 # test_get_dst()
 # test_has_error()
 # test_service_response()
