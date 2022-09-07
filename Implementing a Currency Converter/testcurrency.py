@@ -12,21 +12,42 @@ import introcs
 
 import currency
 
-print('All tests completed successfully')
-
-
 def test_before_space():
     """
     Test procedure for before_space
     """
     print('Testing before_space')
-
+    
+    result = currency.before_space("Hello World")
+    introcs.assert_equals("Hello",result)
+    
+    result = currency.before_space(" Hello World")
+    introcs.assert_equals("",result)
+    
+    result = currency.before_space("Hello  World")
+    introcs.assert_equals("Hello",result)
+    
+    result = currency.before_space(" Hello")
+    introcs.assert_equals("",result)
+    
 
 def test_after_space():
     """
     Test procedure for after_space
     """
     print("Testing after_space")
+    
+    result = currency.after_space("Hello World")
+    introcs.assert_equals("World",result)
+    
+    result = currency.after_space(" Hello World")
+    introcs.assert_equals("Hello World",result)
+    
+    result = currency.after_space("Hello  World")
+    introcs.assert_equals(" World",result)
+    
+    result = currency.after_space("Hello ")
+    introcs.assert_equals("",result)
 
 
 def test_first_inside_quotes():
@@ -80,11 +101,11 @@ def test_exchange():
 
 test_before_space()
 test_after_space()
-test_first_inside_quotes()
-test_get_src()
-test_get_dst()
-test_has_error()
-test_service_response()
-test_iscurrency()
-test_exchange()
+# test_first_inside_quotes()
+# test_get_src()
+# test_get_dst()
+# test_has_error()
+# test_service_response()
+# test_iscurrency()
+# test_exchange()
 print("All tests completed successfully")
