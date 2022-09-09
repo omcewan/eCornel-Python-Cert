@@ -95,7 +95,67 @@ def get_src(json):
     Parameter json: a json string to parse
     Precondition: json a string provided by the web service (ONLY enforce the type)
     """
+    assert type(json) == str
     src_position = introcs.find_str(json, 'src')
     return first_inside_quotes(json[src_position + 4:])
 
 
+def get_dst(json):
+    """
+    Returns the dst value in the response to a currency query.
+
+    Given a JSON string provided by the web service, this function returns the string
+    inside string quotes (") immediately following the substring '"dst"'. For example,
+    if the json is
+
+        '{"success": true, "src": "2 United States Dollars", "dst": "1.772814 Euros", "error": ""}'
+
+    then this function returns '1.772814 Euros' (not '"1.772814 Euros"'). On the other
+    hand if the json is 
+
+        '{"success":false,"src":"","dst":"","error":"Source currency code is invalid."}'
+
+    then this function returns the empty string.
+
+    The web server does NOT specify the number of spaces after the colons. The JSON
+
+        '{"success":true, "src":"2 United States Dollars", "dst":"1.772814 Euros", "error":""}'
+
+    is also valid (in addition to the examples above).
+
+    Parameter json: a json string to parse
+    Precondition: json a string provided by the web service (ONLY enforce the type)
+    """
+    assert type(json) == str
+    dst_position = introcs.find_str(json, 'dst')
+    return first_inside_quotes(json[dst_position + 4: ])
+
+def has_error(json):
+    """
+    Returns True if the response to a currency query encountered an error.
+
+    Given a JSON string provided by the web service, this function returns True if the
+    query failed and there is an error message. For example, if the json is
+        
+        '{"success":false,"src":"","dst":"","error":"Source currency code is invalid."}'
+
+    then this function returns True (It does NOT return the error message 
+    'Source currency code is invalid'). On the other hand if the json is 
+        
+        '{"success": true, "src": "2 United States Dollars", "dst": "1.772814 Euros", "error": ""}'
+
+    then this function returns False.
+
+    The web server does NOT specify the number of spaces after the colons. The JSON
+        
+        '{"success":true, "src":"2 United States Dollars", "dst":"1.772814 Euros", "error":""}'
+        
+    is also valid (in addition to the examples above).
+
+    Parameter json: a json string to parse
+    Precondition: json a string provided by the web service (ONLY enforce the type)
+    """
+    assert type(json) == str
+    err_position = introcs.find_str(json, 'error')
+    # print(bool(len(first_inside_quotes(json[err_position + 6: ]))))
+    return bool(len(first_inside_quotes(json[err_position + 6: ])))
