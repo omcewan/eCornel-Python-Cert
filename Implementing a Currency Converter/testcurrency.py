@@ -132,6 +132,18 @@ def test_service_response():
     Test procedure for service_response
     """
     print("Testing service_response")
+    
+    result = currency.service_response('USD', 'EUR', 2.5)
+    introcs.assert_equals('{"success": true, "src": "2.5 United States Dollars", "dst": "2.2160175 Euros", "error": ""}', result)
+    
+    result = currency.service_response('USD', 'EUD', 2.5)
+    introcs.assert_equals('{"success": false, "src": "", "dst": "", "error": "The rate for currency EUD is not present."}', result)
+    
+    result = currency.service_response('USA', 'EUR', 2.5)
+    introcs.assert_equals('{"success": false, "src": "", "dst": "", "error": "The rate for currency USA is not present."}', result)
+    
+    result = currency.service_response('USD', 'EUR', -2.5)
+    introcs.assert_equals('{"success": true, "src": "-2.5 United States Dollars", "dst": "-2.2160175 Euros", "error": ""}', result)
 
 
 def test_iscurrency():
@@ -154,7 +166,7 @@ test_first_inside_quotes()
 test_get_src()
 test_get_dst()
 test_has_error()
-# test_service_response()
+test_service_response()
 # test_iscurrency()
 # test_exchange()
 print("All tests completed successfully")

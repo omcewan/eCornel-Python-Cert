@@ -159,3 +159,38 @@ def has_error(json):
     err_position = introcs.find_str(json, 'error')
     # print(bool(len(first_inside_quotes(json[err_position + 6: ]))))
     return bool(len(first_inside_quotes(json[err_position + 6: ])))
+
+
+def service_response(src, dst, amt):
+    """
+    Returns a JSON string that is a response to a currency query.
+
+    A currency query converts amt money in currency src to the currency dst. The response 
+    should be a string of the form
+
+        '{"success": true, "src": "<src-amount>", dst: "<dst-amount>", error: ""}'
+
+    where the values src-amount and dst-amount contain the value and name for the src 
+    and dst currencies, respectively. If the query is invalid, both src-amount and 
+    dst-amount will be empty, and the error message will not be empty.
+
+    There may or may not be spaces after the colon.  To test this function, you should
+    chose specific examples from your web browser.
+
+    Parameter src: the currency on hand
+    Precondition src is a nonempty string with only letters
+
+    Parameter dst: the currency to convert to
+    Precondition dst is a nonempty string with only letters
+
+    Parameter amt: amount of currency to convert
+    Precondition amt is a float or int
+    """
+    
+    assert type(src) == str and introcs.isalpha(src) and len(src) > 0
+    assert type(dst) == str and introcs.isalpha(dst) and len(dst) > 0
+    assert type(amt) == int or type(amt) == float
+    
+    url = f'https://ecpyfac.ecornell.com/python/currency/fixed?src={src}&dst={dst}&amt={amt}&key={APIKEY}'
+    return introcs.urlread(url)
+    
