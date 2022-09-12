@@ -151,6 +151,12 @@ def test_iscurrency():
     Test procedure for iscurrency
     """
     print("Testing iscurrency")
+    
+    result = currency.iscurrency('USD')
+    introcs.assert_equals(True, result)
+    
+    result = currency.iscurrency('USA')
+    introcs.assert_equals(False, result)
 
 
 def test_exchange():
@@ -158,6 +164,12 @@ def test_exchange():
     Test procedure for exchange
     """
     print("Testing exchange")
+    
+    result = currency.exchange('USD', 'EUR', 2.5)
+    introcs.assert_floats_equal(2.2160175, result)
+    
+    result = currency.exchange('USD', 'EUR', -2.5)
+    introcs.assert_floats_equal(-2.2160175, result)
 
 
 test_before_space()
@@ -167,6 +179,6 @@ test_get_src()
 test_get_dst()
 test_has_error()
 test_service_response()
-# test_iscurrency()
-# test_exchange()
+test_iscurrency()
+test_exchange()
 print("All tests completed successfully")

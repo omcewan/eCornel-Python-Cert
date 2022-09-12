@@ -9,6 +9,7 @@ Author: Orlando McEwan
 Date: 09/02/2022
 """
 
+from urllib import response
 import introcs
 
 APIKEY = 'nBdQBzGVTsB6WwLgqXN9TLAVop0z8r6ELFTp6KcSenwe'
@@ -128,7 +129,8 @@ def get_dst(json):
     """
     assert type(json) == str
     dst_position = introcs.find_str(json, 'dst')
-    return first_inside_quotes(json[dst_position + 4: ])
+    return first_inside_quotes(json[dst_position + 4:])
+
 
 def has_error(json):
     """
@@ -136,20 +138,20 @@ def has_error(json):
 
     Given a JSON string provided by the web service, this function returns True if the
     query failed and there is an error message. For example, if the json is
-        
+
         '{"success":false,"src":"","dst":"","error":"Source currency code is invalid."}'
 
     then this function returns True (It does NOT return the error message 
     'Source currency code is invalid'). On the other hand if the json is 
-        
+
         '{"success": true, "src": "2 United States Dollars", "dst": "1.772814 Euros", "error": ""}'
 
     then this function returns False.
 
     The web server does NOT specify the number of spaces after the colons. The JSON
-        
+
         '{"success":true, "src":"2 United States Dollars", "dst":"1.772814 Euros", "error":""}'
-        
+
     is also valid (in addition to the examples above).
 
     Parameter json: a json string to parse
@@ -158,7 +160,7 @@ def has_error(json):
     assert type(json) == str
     err_position = introcs.find_str(json, 'error')
     # print(bool(len(first_inside_quotes(json[err_position + 6: ]))))
-    return bool(len(first_inside_quotes(json[err_position + 6: ])))
+    return bool(len(first_inside_quotes(json[err_position + 6:])))
 
 
 def service_response(src, dst, amt):
@@ -186,11 +188,54 @@ def service_response(src, dst, amt):
     Parameter amt: amount of currency to convert
     Precondition amt is a float or int
     """
-    
+
     assert type(src) == str and introcs.isalpha(src) and len(src) > 0
     assert type(dst) == str and introcs.isalpha(dst) and len(dst) > 0
     assert type(amt) == int or type(amt) == float
-    
+
     url = f'https://ecpyfac.ecornell.com/python/currency/fixed?src={src}&dst={dst}&amt={amt}&key={APIKEY}'
     return introcs.urlread(url)
+
+
+def iscurrency(currency):
+    """
+    Returns True if currency is a valid (3 letter code for a) currency.
+
+    It returns False otherwise.
+
+    Parameter currency: the currency code to verify
+    Precondition: currency is a nonempty string with only letters
+    """
     
+    assert type(currency) == str and len(currency) > 0 and introcs.isalpha(currency)
+
+    url = f'https://ecpyfac.ecornell.com/python/currency/fixed?src={currency}&dst={currency}&amt=0&key={APIKEY}'
+    response = introcs.urlread(url)
+    return not has_error(response)
+
+
+def exchange(src, dst, amt):
+    """
+    Returns the amount of currency received in the given exchange.
+
+    In this exchange, the user is changing amt money in currency src to the currency 
+    dst. The value returned represents the amount in currency currency_to.
+
+    The value returned has type float.
+
+    Parameter src: the currency on hand
+    Precondition src is a string for a valid currency code
+
+    Parameter dst: the currency to convert to
+    Precondition dst is a string for a valid currency code
+
+    Parameter amt: amount of currency to convert
+    Precondition amt is a float or int
+    """
+    assert type(src) == str and introcs.isalpha(src) and len(src) > 0
+    assert type(dst) == str and introcs.isalpha(dst) and len(dst) > 0
+    assert type(amt) == int or type(amt) == float
+
+    response = service_response(src, dst, amt)
+    dst_value = get_dst(response)
+    return float(before_space(dst_value))
