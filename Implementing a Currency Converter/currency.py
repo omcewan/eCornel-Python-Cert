@@ -9,7 +9,6 @@ Author: Orlando McEwan
 Date: 09/02/2022
 """
 
-from urllib import response
 import introcs
 
 APIKEY = 'nBdQBzGVTsB6WwLgqXN9TLAVop0z8r6ELFTp6KcSenwe'
