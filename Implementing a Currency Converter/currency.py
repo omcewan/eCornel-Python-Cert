@@ -193,8 +193,9 @@ def service_response(src, dst, amt):
     assert type(dst) == str and introcs.isalpha(dst) and len(dst) > 0
     assert type(amt) == int or type(amt) == float
 
-    url = f'https://ecpyfac.ecornell.com/python/currency/fixed?src={src}&dst={dst}&amt={amt}&key={APIKEY}'
-    return introcs.urlread(url)
+    url_1 = f'https://ecpyfac.ecornell.com/python/currency/fixed?src={src}&dst='
+    url_2 = f'{dst}&amt={amt}&key={APIKEY}'
+    return introcs.urlread(url_1+url_2)
 
 
 def iscurrency(currency):
@@ -206,11 +207,13 @@ def iscurrency(currency):
     Parameter currency: the currency code to verify
     Precondition: currency is a nonempty string with only letters
     """
-    
-    assert type(currency) == str and len(currency) > 0 and introcs.isalpha(currency)
 
-    url = f'https://ecpyfac.ecornell.com/python/currency/fixed?src={currency}&dst={currency}&amt=0&key={APIKEY}'
-    response = introcs.urlread(url)
+    assert type(currency) == str and len(
+        currency) > 0 and introcs.isalpha(currency)
+
+    url_1 = f'https://ecpyfac.ecornell.com/python/currency/fixed?src={currency}&'
+    url_2 = f'dst={currency}&amt=0&key={APIKEY}'
+    response = introcs.urlread(url_1+url_2)
     return not has_error(response)
 
 
