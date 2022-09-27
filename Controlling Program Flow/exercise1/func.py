@@ -23,4 +23,35 @@ def first_vowel(s):
     Parameter s: the string to search
     Precondition: s is a nonempty string with only lowercase letters
     """
-    pass
+    
+    # set a variable with the smallest index as the length of the string. This will be the starting point and for each vowel we check we will compare its value against the smallest_index variable and we will return this at the end
+    result = len(s)
+    
+    # find the index for every vowel if it exists
+    vowel_a = introcs.find_str(s, 'a')
+    vowel_e = introcs.find_str(s, 'e')
+    vowel_i = introcs.find_str(s, 'i')
+    vowel_o = introcs.find_str(s, 'o')
+    vowel_u = introcs.find_str(s, 'u')
+    vowel_y = introcs.find_str(s, 'y', 1)
+    
+    # use if statments to check which vowel has the smallest index.
+    if vowel_a < result and vowel_a > -1:
+        result = vowel_a
+        
+    if vowel_e < result and vowel_e > -1:
+        result = vowel_e
+        
+    if vowel_i < result and vowel_i > -1:
+        result = vowel_i
+        
+    if vowel_o < result and vowel_o > -1:
+        result = vowel_o
+        
+    if vowel_u < result and vowel_u > -1:
+        result = vowel_u
+        
+    if vowel_y < result and vowel_y > -1:
+        result = vowel_y
+    
+    return result
