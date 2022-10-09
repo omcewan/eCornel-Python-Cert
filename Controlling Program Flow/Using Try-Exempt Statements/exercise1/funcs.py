@@ -4,8 +4,8 @@ A module to demonstrate how to test precondition enforcement.
 This module has a function (and a helper) that uses assert statements to enforce 
 the preconditions.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/09/2022
 """
 import introcs
 
@@ -44,16 +44,42 @@ def valid_format(s):
 def time_to_minutes(s):
     """
     Returns the number of minutes since midnight
-    
+
     Examples:
        time_to_minutes('2:45 PM') returns 885
-       time_to_minutes('9:05 AM') returns 545
+       time_to_minutes('9:05 AM'_ returns 545
        time_to_minutes('12:00 AM') returns 0
-    
+
     Parameter s: string representation of the time
     Precondition: s is a string in 12-format '<hours>:<min> AM/PM'
     """
-    pass
+    
+    assert type(s) == str, 'Parameter s is not a string'
+    assert valid_format(s), 'Parameter s is not in correct format'
+    # Find the separators
+    pos1 = introcs.find_str(s, ':')
+    pos2 = introcs.find_str(s, ' ')
+
+    # Get hour and convert to int
+    hour = s[:pos1]
+    hour = int(hour)
+
+    # Adjust hour to be correct.
+    suff = s[pos2+1:]
+    if (suff == 'PM'):
+        if hour == 12:
+            hour = hour
+        else:
+            hour = hour+12
+    elif (suff == 'AM' and hour == 12):
+        hour = 0
+
+    # Get min and convert to int
+    mins = s[pos1 + 1:pos2]
+    mins = int(mins)
+
+    return hour*60+mins
+
 
 
 def str_to_minutes(s):
@@ -72,6 +98,9 @@ def str_to_minutes(s):
     Parameter s: a string potentially representating a time
     Precondition: s is non-empty
     """
-    pass
-
+    
+    try:
+        return time_to_minutes(s)
+    except:
+        return -1
 
