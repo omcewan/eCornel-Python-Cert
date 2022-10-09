@@ -1,0 +1,123 @@
+Exercise 1
+==========
+Docstring comments:
+There is no name after 'Author:' in the module docstring.
+The date after 'Date:' in the module docstring is invalid .
+
+Comments for 'lesser':
+The call lesser((5, 9, 5, 7, 3, 10, 4), 5) returns None, not 2.
+The call lesser((5, 9, 5, 7, 3, 10, 4), 4) returns None, not 1.
+The call lesser((5, 9, 5, 7, 3, 10, 4), 3) returns None, not 0.
+The call lesser((5, 9, 5, 7, 3, 10, 4), 2) returns None, not 0.
+The call lesser((5, 9, 5, 7, 3, 10, 4), 6) returns None, not 4.
+The call lesser((5, 9, 5, 7, 3, 10, 4), 10) returns None, not 6.
+The call lesser((5, 9, 5, 7, 3, 10, 4), 20) returns None, not 7.
+The call lesser((1, 2, 3, 4), 1) returns None, not 0.
+The call lesser((1, 2, 3, 4), 2) returns None, not 1.
+The call lesser((1, 2, 3, 4), 3) returns None, not 2.
+The call lesser((1, 2, 3, 4), 4) returns None, not 3.
+The call lesser((1, 2, 3, 4), 5) returns None, not 4.
+The call lesser((2,), 2) returns None, not 0.
+The call lesser((2,), 3) returns None, not 1.
+Function 'lesser' does not have a for-loop in it.
+
+Comments for 'avg':
+The call avg((7, 1, 4, 3, 6, 8)) returns None, not 4.833333333333333.
+The call avg((-1, 1, 3, 5)) returns None, not 2.0.
+The call avg((2.5,)) returns None, not 2.5.
+The call avg((1.0, 1.0, 1.0)) returns None, not 1.0.
+The call avg(()) returns None, not 0.0.
+The call avg((-1, 1, -1, 1, -1, 1, -1, 1)) returns None, not 0.0.
+Function 'avg' does not have a for-loop in it.
+
+
+
+Exercise 2
+==========
+Docstring comments:
+There is no name after 'Author:' in the module docstring.
+The date after 'Date:' in the module docstring is invalid .
+
+Comments for 'clamp':
+The call clamp((-1, 1, 3, 5), 0, 4) returns None, not (0, 1, 3, 4).
+The call clamp((-1, 1, 3, 5), 1, 3) returns None, not (1, 1, 3, 3).
+The call clamp((-1, 1, 3, 5), 1, 1) returns None, not (1, 1, 1, 1).
+The call clamp((-1, 1, 3, 5), -2, -1) returns None, not (-1, -1, -1, -1).
+The call clamp((-1, 1, 3, 5), -2, 8) returns None, not (-1, 1, 3, 5).
+The call clamp((1, 2, 3, 4), 0, 4) returns None, not (1, 2, 3, 4).
+The call clamp((1, 2, 3, 4), 0, 0) returns None, not (0, 0, 0, 0).
+The call clamp((1, 2, 3, 4), 5, 5) returns None, not (5, 5, 5, 5).
+The call clamp((2,), 2, 3) returns None, not (2,).
+The call clamp((2,), 0, 1) returns None, not (1,).
+The call clamp((2,), 3, 4) returns None, not (3,).
+Function 'clamp' does not have a for-loop in it.
+
+Comments for 'uniques':
+The call uniques((5, 9, 5, 7)) returns None, not 3.
+The call uniques((5, 5, 1, 'a', 5, 'a')) returns None, not 3.
+The call uniques(('a', 'aa', 'aaa', 'a', 'aa')) returns None, not 3.
+The call uniques((1, 2, 3, 4, 5)) returns None, not 5.
+The call uniques((2, True, False)) returns None, not 3.
+The call uniques((1,)) returns None, not 1.
+The call uniques(()) returns None, not 0.
+Function 'uniques' does not have a for-loop in it.
+
+
+
+Exercise 3
+==========
+Docstring comments:
+There is no name after 'Author:' in the module docstring.
+The date after 'Date:' in the module docstring is invalid .
+
+Comments for 'factorial':
+The call factorial(0) returns None, not 1.
+The call factorial(1) returns None, not 1.
+The call factorial(2) returns None, not 2.
+The call factorial(3) returns None, not 6.
+The call factorial(4) returns None, not 24.
+The call factorial(5) returns None, not 120.
+The call factorial(6) returns None, not 720.
+The call factorial(8) returns None, not 40320.
+The call factorial(12) returns None, not 479001600.
+Function 'factorial' does not have a for-loop in it.
+
+Comments for 'revrange':
+The call revrange(0, 3) returns None, not (2, 1, 0).
+The call revrange(0, 4) returns None, not (3, 2, 1, 0).
+The call revrange(-1, 5) returns None, not (4, 3, 2, 1, 0, -1).
+The call revrange(5, 10) returns None, not (9, 8, 7, 6, 5).
+The call revrange(3, 4) returns None, not (3,).
+The call revrange(3, 3) returns None, not ().
+Function 'revrange' does not have a for-loop in it.
+
+
+
+Exercise 4
+==========
+Docstring comments:
+There is no name after 'Author:' in the module docstring.
+The date after 'Date:' in the module docstring is invalid .
+
+Comments for 'skip':
+The call skip('hello world', 1) returns None, not 'hello world'.
+The call skip('hello world', 2) returns None, not 'hlowrd'.
+The call skip('hello world', 3) returns None, not 'hlwl'.
+The call skip('hello world', 4) returns None, not 'hor'.
+The call skip('hello world', 5) returns None, not 'h d'.
+The call skip('goodnight moon', 4) returns None, not 'gnto'.
+The call skip('goodnight moon', 6) returns None, not 'ggo'.
+The call skip('goodnight moon', 12) returns None, not 'go'.
+The call skip('goodnight moon', 14) returns None, not 'g'.
+Function 'skip' does not have a for-loop in it.
+
+Comments for 'fixed_points':
+The call fixed_points((0, 3, 2)) returns None, not (0, 2).
+The call fixed_points((0, 1, 2, 3)) returns None, not (0, 1, 2, 3).
+The call fixed_points((2, 1, 2, 1)) returns None, not (1, 2).
+The call fixed_points((2, 2, 2, 2)) returns None, not (2,).
+The call fixed_points((3, 2, 1, 0)) returns None, not ().
+The call fixed_points(()) returns None, not ().
+The call fixed_points((-1, 0, -3, 2, 4)) returns None, not (4,).
+Function 'fixed_points' does not have a for-loop in it.
+
