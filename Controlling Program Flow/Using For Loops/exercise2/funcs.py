@@ -3,8 +3,8 @@ Module with more complex for-loop functions.
 
 All of these functions make use of accumulators that make new tuples.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/09/2022
 """
 
 
@@ -31,8 +31,18 @@ def clamp(tup,min,max):
     Parameter max: the maximum value for the tuple
     Precondition: max >= min is a number
     """
-    pass
+    
+    my_tup = ()
+    
+    for num in tup:
+        if num < min:
+            my_tup += (min,)
+        elif num > max:
+            my_tup += (max,)
+        else:
+            my_tup += (num,)
 
+    return my_tup
 
 def uniques(tup):
     """
@@ -46,4 +56,14 @@ def uniques(tup):
     Parameter tup: the tuple to copy
     Precondition: tup is a tuple
     """
-    pass
+    
+    if len(tup) == 0:
+        return 0
+    
+    unique = ()
+    
+    for num in tup:
+        if num not in unique:
+            unique += (num,)
+    
+    return len(unique)
