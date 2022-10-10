@@ -1,8 +1,8 @@
 """
 Module with range-based for-loop functions.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan  
+Date: 10/09/2022
 """
 
 def factorial(n):
@@ -20,9 +20,17 @@ def factorial(n):
     Parameter n: The integer for the factorial
     Precondition: n is an int >= 0
     """
-    pass
+    
+    if n == 0:
+        return 1
+    
+    sum = 1
+    
+    for num in range(n):
+        sum *= n - num
 
-
+    return sum
+        
 def revrange(a,b):
     """
     Returns the tuple (b-1, b-2, ..., a)
@@ -35,4 +43,9 @@ def revrange(a,b):
     Parameter b: the "end" of the range
     Precondition: b is an int >= a
     """
-    pass
+    my_tup = ()
+    
+    for num in range(b-1, a-1, -1):
+        my_tup += (num,)
+
+    return my_tup
