@@ -1,8 +1,8 @@
 """
 Module with for-loops that loop over positions.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan  
+Date: 10/09/2022
 """
 
 
@@ -24,8 +24,15 @@ def skip(s,n):
     Parameter n: the letter positions to accept
     Precondition: n is an int > 0
     """
-    pass
+    
+    str_multiple = ''
+    
+    for num in range(len(s)):
+        if num % n == 0:
+            str_multiple += s[num]
 
+    return str_multiple
+        
 
 def fixed_points(tup):
     """
@@ -43,4 +50,11 @@ def fixed_points(tup):
     Parameter tup: the tuple to copy
     Precondition: tup is a tuple of ints
     """
-    pass
+    
+    fix_tup = ()
+    
+    for num in range(len(tup)):
+        if num == tup[num]:
+            fix_tup += (num,)
+            
+    return fix_tup
