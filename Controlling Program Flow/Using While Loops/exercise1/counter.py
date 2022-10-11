@@ -4,7 +4,7 @@ Module demonstrating an input-driven while loop
 There is no test script for this module.  Run this module as a script to test it.
 
 Author: Orlando McEwan
-Date: 10/10/20022
+Date: 10/10/2022
 """
 
 

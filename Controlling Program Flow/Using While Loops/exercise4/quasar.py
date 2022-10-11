@@ -6,8 +6,8 @@ maximize your winnings, see
     
     https://masseffect.fandom.com/wiki/Quasar
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/11/2022
 """
 import random
 import introcs
