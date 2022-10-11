@@ -1,8 +1,8 @@
 """
 Module with for-loops that loop over positions.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/10/2022
 """
 
 
@@ -25,8 +25,19 @@ def skip(s,n):
     Precondition: n is an int > 0
     """
     # You must use a while-loop, not a for-loop
-    pass
     
+    my_s = ''
+    
+    index = 0
+    
+    while index < len(s):
+        if index % n == 0:
+            my_s += s[index]
+            index += 1
+        else:
+            index += 1
+            
+    return my_s
 
 def fixed_points(tup):
     """
@@ -45,4 +56,15 @@ def fixed_points(tup):
     Precondition: tup is a tuple of ints
     """
     # You must use a while-loop, not a for-loop
-    pass
+    my_tup = ()
+    
+    index = 0
+    
+    while index < len(tup):
+        if index == tup[index]:
+            my_tup += (index,)
+            index += 1
+        else:
+            index += 1
+
+    return my_tup
