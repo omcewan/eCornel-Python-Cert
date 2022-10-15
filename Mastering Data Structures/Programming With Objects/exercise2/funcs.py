@@ -4,8 +4,8 @@ Module demonstrating how to write functions with objects.
 This module contains two versions of the same function.  One version returns a new
 value, while other modifies one of the arguments to contain the new value.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/15/2022
 """
 import clock
 
@@ -26,8 +26,28 @@ def add_time1(time1, time2):
     Parameter time2: the time to add
     Precondition: time2 is a Time object
     """
-    pass
-
+    # print(time1, time2)
+    
+    hours_t1 = time1.hours
+    hours_t2 = time2.hours
+    total_hours = hours_t1 + hours_t2
+    # print(hours_t1, hours_t2)
+    
+    minutes_t1 = time1.minutes
+    minutes_t2 = time2.minutes
+    total_minutes = minutes_t1 + minutes_t2
+    # print(minutes_t1, minutes_t2)
+    
+    if total_minutes > 59:
+        if total_minutes == 60:
+            total_hours += 1
+            total_minutes = 0
+        else:
+            total_hours += 1
+            total_minutes = total_minutes - 60
+            
+    # print(clock.Time(total_hours, total_minutes))
+    return clock.Time(total_hours, total_minutes)
 
 def add_time2(time1, time2):
     """
@@ -45,4 +65,6 @@ def add_time2(time1, time2):
     Parameter time2: the time to add
     Precondition: time2 is a Time object
     """
-    pass
+    new_time = add_time1(time1, time2)
+    time1.hours = new_time.hours
+    time1.minutes = new_time.minutes
