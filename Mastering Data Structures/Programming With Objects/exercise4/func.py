@@ -4,8 +4,8 @@ Module to show off tuple methods.
 Neither this module nor the function should import the introcs module.  In addition,
 the function should not use a loop or recursion.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/16/2022
 """
 
 
@@ -26,4 +26,19 @@ def replace_first(tup,a,b):
     Parameter b: The value to replace with
     Precondition: b is an int
     """
-    pass
+    
+    if a not in tup:
+        new_tup = tup
+        return new_tup
+    else:
+        index_a = tup.index(a)
+        new_tup = ()
+        if index_a == 0:
+            new_tup += (b,)
+            new_tup += (tup[index_a + 1:])
+            return new_tup
+        else:
+            new_tup += (tup[:index_a])
+            new_tup += (b,)
+            new_tup += (tup[index_a + 1:])
+            return new_tup
