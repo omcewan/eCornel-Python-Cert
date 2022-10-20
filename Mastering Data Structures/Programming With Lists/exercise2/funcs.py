@@ -3,8 +3,8 @@ Module with non-mutable functions on lists.
 
 All of these functions make use of accumulators that make new lists.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/20/2022
 """
 
 
@@ -31,7 +31,17 @@ def clamp(alist,min,max):
     Parameter max: the maximum value for the list
     Precondition: max >= min is a number
     """
-    pass
+    alist_copy = []
+    
+    for num in alist:
+        if num < min:
+            alist_copy.append(min)
+        elif num > max:
+            alist_copy.append(max)
+        else:
+            alist_copy.append(num)
+
+    return alist_copy
 
 
 def removeall(alist,n):
@@ -51,4 +61,10 @@ def removeall(alist,n):
     Parameter n: the number to remove
     Precondition: n is a number
     """
-    pass
+    alist_copy = []
+    
+    for num in alist:
+        if num != n:
+            alist_copy.append(num)
+    
+    return alist_copy
