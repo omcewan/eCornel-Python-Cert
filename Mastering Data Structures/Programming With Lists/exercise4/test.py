@@ -1,8 +1,8 @@
 """
 Partially completed test script for tuple expansion
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/22/2022
 """
 import introcs
 import func
@@ -30,8 +30,10 @@ def test_avg():
     introcs.assert_floats_equal(1.0,result)
     
     # Test range(10,20) here
-
-
+    a = tuple(range(10,20))
+    result = func.avg(*a)
+    introcs.assert_floats_equal(14.5, result)
+    
 if __name__ == '__main__':
     test_avg()
     print('Module func passed all tests.')
