@@ -64,8 +64,8 @@ The contents of interest in this module is the nested "temperature" dictionary.
 
 IMPORTANT: Not all weather reports contain a temperature measurement.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/27/2022
 """
 
 
@@ -110,4 +110,19 @@ def reports_above_temp(weather,temp):
     Parameter temp: the temperature in celsius
     Precondition: temp is a float
     """
-    pass
+    sum = 0
+    
+    for time_stamp in weather:
+        
+        if 'temperature' in weather[time_stamp]:
+            temp_keys = list(weather[time_stamp]['temperature'].keys())
+            
+            if weather[time_stamp]['temperature'][temp_keys[1]] == 'C':
+                if weather[time_stamp]['temperature'][temp_keys[0]] > temp:
+                    sum += 1
+            else:
+                temp_in_C = to_celsius(weather[time_stamp]['temperature'][temp_keys[0]])
+                if temp_in_C > temp:
+                    sum += 1
+
+    return sum     

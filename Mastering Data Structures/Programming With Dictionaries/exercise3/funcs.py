@@ -3,8 +3,8 @@ Module demonstrating mutable functions on dictionaries.
 
 All of these functions modify their dictionary arguments.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/27/2022
 """
 
 
@@ -27,7 +27,18 @@ def letter_grades(adict):
     Parameter adict: the dictionary of grades
     Precondition: adict is dictionary mapping strings to ints
     """
-    pass
+    
+    for key in adict:
+        if adict[key] >= 90:
+            adict[key] = 'A'
+        elif adict[key] < 90 and adict[key] >= 80:
+            adict[key] = 'B'
+        elif adict[key] < 80 and adict[key] >= 70:
+            adict[key] = 'C'
+        elif adict[key] < 70 and adict[key] >= 60:
+            adict[key] = 'D'
+        else:
+            adict[key] = 'F'
 
 
 def drop_below(adict,limit):
@@ -50,4 +61,8 @@ def drop_below(adict,limit):
     Precondition: limit is a number (int or float)
     """
     # Hint: Create a list of netids to drop, and THEN drop them
-    pass
+    below_limit_keys = list(adict.keys())
+    
+    for key in below_limit_keys:
+        if adict[key] < limit:
+            del adict[key]

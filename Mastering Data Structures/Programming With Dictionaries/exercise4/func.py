@@ -1,13 +1,13 @@
 """
 Module to demonstrate keyword expansion.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 10/27/2022
 """
 import math
 
 
-def circ_area():    # The parameter is MISSING.  Add it back. 
+def circ_area(**kwd):    # The parameter is MISSING.  Add it back. 
     """
     Returns the area of the specified circle, defined by the keywords in kwd
     
@@ -29,4 +29,13 @@ def circ_area():    # The parameter is MISSING.  Add it back.
     Parameter kwd: the function keyword arguments
     Precondition: the arguments are all numbers (int or float)
     """
-    pass
+    
+    assert 'radius' in kwd or 'diameter' in kwd
+    assert not 'radius' in kwd or not 'diameter' in kwd
+    
+    if 'radius' in kwd:
+        return math.pi * (kwd['radius'] * kwd['radius'])
+    elif 'diameter' in kwd:
+        radius = kwd['diameter'] / 2
+        return math.pi * (radius * radius)
+    
