@@ -1,0 +1,118 @@
+{
+    "2018-01-01T00:00:00-05:00": {
+        "visibility": {
+            "prevailing": 1.75,
+            "units": "SM"
+        },
+        "wind": {
+            "speed": 13.0,
+            "crosswind": 5.0,
+            "units": "KT"
+        },
+        "temperature": {
+            "value": -15.0,
+            "units": "C"
+        },
+        "sky": [
+            {
+                "cover": "clouds",
+                "type": "broken",
+                "height": 1200.0,
+                "units": "FT"
+            },
+            {
+                "type": "overcast",
+                "height": 1800.0,
+                "units": "FT"
+            }
+        ],
+        "weather": [
+            "light snow",
+            "mist"
+        ],
+        "code": "201801010456Z"
+    },
+    "2017-12-31T23:00:00-05:00": {
+        "visibility": {
+            "prevailing": 1.75,
+            "units": "SM"
+        },
+        "wind": {
+            "speed": 13.0,
+            "crosswind": 5.0,
+            "units": "KT"
+        },
+        "temperature": {
+            "value": -15.0,
+            "units": "C"
+        },
+        "sky": [
+            {
+                "cover": "clouds",
+                "type": "broken",
+                "height": 1300.0,
+                "units": "FT"
+            },
+            {
+                "type": "overcast",
+                "height": 2200.0,
+                "units": "FT"
+            }
+        ],
+        "weather": [
+            "light snow",
+            "mist"
+        ],
+        "code": "201801010356Z"
+    },
+    "2017-12-31T22:00:00-05:00": {
+        "visibility": {
+            "prevailing": 3.0,
+            "units": "SM"
+        },
+        "wind": {
+            "speed": 11.0,
+            "crosswind": 7.0,
+            "units": "KT"
+        },
+        "temperature": {
+            "value": -15.0,
+            "units": "C"
+        },
+        "sky": [
+            {
+                "type": "overcast",
+                "height": 1300.0,
+                "units": "FT"
+            }
+        ],
+        "weather": [
+            "light snow",
+            "mist"
+        ],
+        "code": "201801010317Z"
+    },
+    "2017-12-31T21:00:00-05:00": {
+        "visibility": {
+            "prevailing": 10.0,
+            "units": "SM"
+        },
+        "wind": {
+            "speed": 10.0,
+            "crosswind": 7.0,
+            "units": "KT"
+        },
+        "temperature": {
+            "value": -16.1,
+            "units": "C"
+        },
+        "sky": [
+            {
+                "type": "overcast",
+                "height": 1700.0,
+                "units": "FT"
+            }
+        ],
+        "code": "201801010156Z"
+    }
+}

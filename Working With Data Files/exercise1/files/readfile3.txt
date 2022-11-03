@@ -1,0 +1,10 @@
+This file is used to test count_lines
+It has a blank line at the end which should not be counted (to make 10 lines)
+3
+4
+5
+6
+7
+8
+9
+10

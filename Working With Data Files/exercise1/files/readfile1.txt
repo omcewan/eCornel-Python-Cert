@@ -1,0 +1,6 @@
+This file is used to test count_lines
+It has 6 lines
+3
+4
+5
+6
