@@ -3,8 +3,8 @@ Module with a function to write CSV files (using data in a 2D list)
 
 This function will be used in the main project.  You should hold on to it.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 11/03/2022
 """
 import csv
 
@@ -25,4 +25,12 @@ def write_csv(data,filename):
     Precondition: filename is a string representing a path to a file with extension
     .csv or .CSV.  The file may or may not exist.
     """
-    pass                    # Implement this function
+    
+    file = open(filename, 'w')
+    
+    wrapper = csv.writer(file)
+    
+    for row in range(len(data)):
+        wrapper.writerow(data[row])
+        
+    file.close()
