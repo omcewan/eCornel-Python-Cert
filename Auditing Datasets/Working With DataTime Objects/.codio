@@ -1,0 +1,22 @@
+{
+// Configure your Run and Preview buttons here.
+
+// Run button configuration
+  "commands": {
+        "Node version": "node --version"
+  },
+
+// Preview button configuration
+  "preview": {
+        "DateTime API":"https://docs.python.org/3.7/library/datetime.html",
+        "DateUtil API":"https://dateutil.readthedocs.io/en/stable/parser.html",
+        "Pytz API" : "http://pytz.sourceforge.net/",
+        "IntroCS API": "https://ecpyfac.ecornell.com/docs/introcs/",
+        "Python API": "https://docs.python.org/3/c-api",
+        "Project Index (static)": "https://{{domain}}/{{index}}",
+        "Current File (static)": "https://{{domain}}/{{filepath}}",
+        "Box URL": "http://{{domain3000}}/",
+        "Box URL SSL": "https://{{domain3000}}/"
+  },
+  "autogradeTestScripts": [".guides/secure/grader.py"]
+}
