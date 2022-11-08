@@ -1,8 +1,8 @@
 """
 A simple function computing time elapsed
 
-Author: YOUR NAME HERE
-Date:   DATE FINISHED HERE
+Author: Orlando McEwan
+Date: 11/07/2022
 """
 import datetime
 
@@ -22,5 +22,14 @@ def past_a_week(d1,d2):
     Precondition: d2 is EITHER a date object or a datetime object
     """
     # HINT: Check the type of d1 or d2. If not a datetime, convert it for comparison
-    pass                    # Implement this function
+    week = datetime.timedelta(weeks=1)
 
+    if type(d1) == type(d2):
+        return d1 < d2 and d2 - d1 >= week
+    else:
+        if hasattr(d1, "hour"):
+            d2_datetime = datetime.datetime(d2.year, d2.month, d2.day, 0, 0, 0)
+            return d1 < d2_datetime and d2_datetime - d1 >= week
+        else:
+            d1_datetime = datetime.datetime(d1.year, d1.month, d1.day, 0, 0, 0)
+            return d1_datetime < d2 and d2 - d1_datetime >= week
