@@ -10,11 +10,13 @@ the functions simpler (because the preconditions ensure we have less to worry ab
 enforcing these preconditions can be quite hard. That is why it is not necessary to 
 enforce any of the preconditions in this module.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 11/13/2022
 """
 import csv
 import json
+from dateutil.parser import parse
+from pytz import timezone
 
 
 def read_csv(filename):
@@ -30,7 +32,18 @@ def read_csv(filename):
     Precondition: filename is a string, referring to a file that exists, and that file 
     is a valid CSV file
     """
-    pass                    # Implement this function
+    file = open(filename)
+    
+    wrapper = csv.reader(file)
+    
+    file_contents = []
+    
+    for row in wrapper:
+        file_contents.append(row)
+    
+    file.close()
+        
+    return file_contents
 
 
 def write_csv(data,filename):
@@ -49,7 +62,14 @@ def write_csv(data,filename):
     Precondition: filename is a string representing a path to a file with extension
     .csv or .CSV.  The file may or may not exist.
     """
-    pass                    # Implement this function
+    file = open(filename, 'w')
+    
+    wrapper = csv.writer(file)
+    
+    for row in range(len(data)):
+        wrapper.writerow(data[row])
+        
+    file.close()
 
 
 def read_json(filename):
@@ -64,7 +84,15 @@ def read_json(filename):
     Precondition: filename is a string, referring to a file that exists, and that file 
     is a valid JSON file
     """
-    pass                    # Implement this function
+    file = open(filename)
+    
+    text = file.read()
+    
+    file.close()
+    
+    data = json.loads(text)
+    
+    return data
 
 
 def str_to_time(timestamp,tzsource=None):
@@ -95,7 +123,25 @@ def str_to_time(timestamp,tzsource=None):
     """
     # HINT: Use the code from the previous exercise and add time zone handling.
     # Use localize if tzsource is a string; otherwise replace the time zone if not None
-    pass
+    try:
+        # parse the string to a datetime object if the timestamp string is valid
+        date_time = parse(timestamp)
+    except:
+        return
+
+    # check if the date_time varible doesn't have a tzinfo and tzsource has a value and not equal to zero
+    if date_time.tzinfo == None and tzsource != None:
+        # if the tzsource is a string we get the timezone and then we localize it to the date_time variable
+        if type(tzsource) == str:
+            tz = timezone(tzsource)
+            date_time = tz.localize(date_time)
+            return date_time
+        # if the tzsource is not None meaning it is a datetime object we replace its tzinfo
+        elif type(tzsource) != None:
+            date_time = date_time.replace(tzinfo=tzsource.tzinfo)
+            return date_time
+    else:
+        return date_time
 
 
 def daytime(time,daycycle):
@@ -138,7 +184,33 @@ def daytime(time,daycycle):
     """
     # HINT: Use the code from the previous exercise to get sunset AND sunrise
     # Add a timezone to time if one is missing (the one from the daycycle)
-    pass
+    # change the date to a iso form datetime object and the timezone from the daycycle if one is missing
+    iso_date = str_to_time(str(time.isoformat()), daycycle["timezone"])
+
+    # get the year value as a string
+    year = str(iso_date.year)
+
+    # check if the year is in the keys of the daycycle
+    if year in daycycle.keys():
+
+        # get the month-day from the iso_date convert to a string and then see if it is within the keys of the daycycle[year]
+        month_day = str(iso_date)[5:10]
+
+        if month_day in daycycle[year].keys():
+            # get the values from sunrise and sunset as wee will need this for our new datetime
+            sunrise = daycycle[year][month_day]["sunrise"]
+            sunset = daycycle[year][month_day]["sunset"]
+
+            # turn the sunrise and sunset into datetime objects with matching year and month
+            daycycle_sunrise = str_to_time(
+                year + '-' + month_day + " " + sunrise, daycycle["timezone"])
+            daycycle_sunset = str_to_time(
+                year + '-' + month_day + " " + sunset, daycycle["timezone"])
+
+            return iso_date > daycycle_sunrise and iso_date < daycycle_sunset
+        else:
+            return
+    return
 
 
 def get_for_id(id,table):
@@ -157,6 +229,22 @@ def get_for_id(id,table):
     
     Parameter table: The 2-dimensional table of data
     Precondition: table is a non-empty 2-dimension list of strings
-    """
-    pass                    # Implement this function
-
+    """ 
+    # get the number of rows in the table
+    height = len(table)
+    
+    # gets the length of the row, number of elements
+    width = len(table[0])
+    
+    # list to copy the row to.
+    id_row = []
+    
+    # loop through the each row index
+    for row in range(height):
+        
+        # if the id is in this row we then want to copy the row
+        if id in table[row]:
+            # loop through each element of the row and append to the copy list
+            for col in range(width):
+                id_row.append(table[row][col])
+            return id_row
