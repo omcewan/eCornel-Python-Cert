@@ -103,4 +103,31 @@ def daytime(time, daycycle):
     """
     # HINT: Use the code from the previous exercise to get sunset AND sunrise
     # Add a timezone to time if one is missing (the one from the daycycle)
-    pass                    # Implement this function
+
+    # change the date to a iso form datetime object and the timezone from the daycycle if one is missing
+    iso_date = str_to_time(str(time.isoformat()), daycycle["timezone"])
+
+    # get the year value as a string
+    year = str(iso_date.year)
+
+    # check if the year is in the keys of the daycycle
+    if year in daycycle.keys():
+
+        # get the month-day from the iso_date convert to a string and then see if it is within the keys of the daycycle[year]
+        month_day = str(iso_date)[5:10]
+
+        if month_day in daycycle[year].keys():
+            # get the values from sunrise and sunset as wee will need this for our new datetime
+            sunrise = daycycle[year][month_day]["sunrise"]
+            sunset = daycycle[year][month_day]["sunset"]
+
+            # turn the sunrise and sunset into datetime objects with matching year and month
+            daycycle_sunrise = str_to_time(
+                year + '-' + month_day + " " + sunrise, daycycle["timezone"])
+            daycycle_sunset = str_to_time(
+                year + '-' + month_day + " " + sunset, daycycle["timezone"])
+
+            return iso_date > daycycle_sunrise and iso_date < daycycle_sunset
+        else:
+            return
+    return

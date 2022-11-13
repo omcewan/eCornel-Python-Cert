@@ -67,7 +67,7 @@ def sunset(date, daycycle):
     # HINT: ISO FORMAT IS 'yyyy-mm-ddThh:mm'.  Find the sunset value by constructing a
     # string in ISO format and calling str_to_time.
 
-    # chande the date to a iso form datetime object
+    # change the date to a iso form datetime object
     iso_date = str_to_time(str(date.isoformat()))
 
     # get the year value as a string
