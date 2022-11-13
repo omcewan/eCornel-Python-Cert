@@ -1,0 +1,13 @@
+[
+	{
+		"cover": "clouds",
+		"type": "broken",
+		"height": 1200.0,
+		"units": "FT"
+	},
+	{
+		"type": "overcast",
+		"height": 1800.0,
+		"units": "FT"
+	}
+]
