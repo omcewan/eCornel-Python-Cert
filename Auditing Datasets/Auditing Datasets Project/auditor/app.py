@@ -17,7 +17,7 @@ import os.path
 import violations
 
 # Uncomment for the extra credit
-#import endorsements
+import endorsements
 #import inspections
 
 
@@ -54,13 +54,16 @@ def discover_violations(directory, output):
     Parameter output: The CSV file to store the results
     Precondition: output is None or a string that is a valid file name
     """
-    list_violations = violations.list_weather_violations(directory)
-    number_violations = len(list_violations)
+    weather_violations = violations.list_weather_violations(directory)
+    endorsement_violations = endorsements.list_endorsement_violations(directory)
+    number_weather_violations = len(weather_violations)
+    number_endorsement_violations = len(endorsement_violations)
+    total_violations = number_endorsement_violations + number_weather_violations
 
-    if number_violations == 1:
-        print(str(number_violations) + ' violation found.')
-    elif number_violations > 1:
-        print(str(number_violations) + ' violations found.')
+    if total_violations == 1:
+        print(str(total_violations) + ' violation found.')
+    elif total_violations > 1:
+        print(str(total_violations) + ' violations found.')
     else:
         print('No violations found.')
 
@@ -68,8 +71,8 @@ def discover_violations(directory, output):
         data = [['STUDENT', 'AIRPLANE', 'INSTRUCTOR',
                  'TAKEOFF', 'LANDING', 'FILED', 'AREA', 'REASON']]
 
-        for row in range(number_violations):
-            data.append(list_violations[row])
+        for row in range(number_weather_violations):
+            data.append(weather_violations[row])
 
         utils.write_csv(data, output)
 

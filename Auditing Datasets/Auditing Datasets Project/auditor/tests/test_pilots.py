@@ -401,7 +401,7 @@ def test_get_minimums():
     print('  %s passed all tests' % fcn)
 
 
-def test(level=TEST_BASIC_APP):
+def test(level=TEST_EXTENSION_1):
     """
     Performs all tests on the module pilots.
     """
