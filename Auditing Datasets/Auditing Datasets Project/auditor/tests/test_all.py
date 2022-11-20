@@ -35,7 +35,7 @@ TEST_EXTENSION_1 = 1
 TEST_EXTENSION_2 = 2
 
 
-def test(level=TEST_EXTENSION_1):
+def test(level=TEST_EXTENSION_2):
     """
     Tests all program features up to the given feature level.
     

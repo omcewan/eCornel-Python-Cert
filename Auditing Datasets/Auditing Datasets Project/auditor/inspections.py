@@ -47,8 +47,8 @@ makes writing the functions simpler (because the preconditions ensure we have
 less to worry about), enforcing these preconditions can be quite hard. That is
 why it is not necessary to enforce any of the preconditions in this module.
 
-Author: YOUR NAME HERE
-Date: THE DATE HERE
+Author: Orlando McEwan
+Date: 11/18/2022
 """
 import os.path
 import datetime
